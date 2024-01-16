@@ -50,14 +50,14 @@ const TTT = () => {
         } else if ((arr[2] === "O") && (arr[4] === "O") && (arr[6] === "O")) {
             setWinner(arr[2])
             return 
-        } else if ((arr[2] === "O") && (arr[5] === "O") && (arr[7] === "O")) {
+        } else if ((arr[2] === "O") && (arr[5] === "O") && (arr[8] === "O")) {
             setWinner(arr[2])
             return 
         } else if ((arr[3] === "O") && (arr[4] === "O") && (arr[5] === "O")) {
             setWinner(arr[3])
             return 
-        } else if ((arr[5] === "O") && (arr[7] === "O") && (arr[8] === "O")) {
-            setWinner(arr[5])
+        } else if ((arr[6] === "O") && (arr[7] === "O") && (arr[8] === "O")) {
+            setWinner(arr[6])
             return 
         }
 
@@ -76,14 +76,14 @@ const TTT = () => {
         } else if ((arr[2] === "X") && (arr[4] === "X") && (arr[6] === "X")) {
             setWinner(arr[2])
             return 
-        } else if ((arr[2] === "X") && (arr[5] === "X") && (arr[7] === "X")) {
+        } else if ((arr[2] === "X") && (arr[5] === "X") && (arr[8] === "X")) {
             setWinner(arr[2])
             return 
         } else if ((arr[3] === "X") && (arr[4] === "X") && (arr[5] === "X")) {
             setWinner(arr[3])
             return 
-        } else if ((arr[5] === "X") && (arr[7] === "X") && (arr[8] === "X")) {
-            setWinner(arr[5])
+        } else if ((arr[6] === "X") && (arr[7] === "X") && (arr[8] === "X")) {
+            setWinner(arr[6])
             return 
         }
     },[turn])
