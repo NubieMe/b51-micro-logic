@@ -8,7 +8,7 @@ const Convert = () => {
     const div_styles = {
         backgroundColor: "#1e293b",
         border: "1 solid #353f4f",
-        width: "130vh",
+        width: "auto",
         margin: "0 auto"
     }
 
@@ -99,9 +99,9 @@ const Convert = () => {
                 </div>
                 <Title>Currency Convert</Title>
             </div>
-            <div style={div_styles} className="d-flex flex-column py-5 px-4 mt-5 rounded">
-                <div className=" d-flex flex-row align-items-center" style={{backgroundColor:"transparent"}}>
-                    <input type="number" id="number" placeholder="Input the amount" className="form-control w-75"/>
+            <div style={div_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-around gap-5 rounded">
+                <div className=" d-flex align-items-center flex-wrap gap-3 bg-transparent">
+                    <input type="number" id="number" placeholder="Input the amount" className="form-control"/>
                     <select id="from" className="bg-light p-1 rounded mx-3" onChange={e => setFrom(e.target.value)}>
                         <option className="bg-light" value=""></option>
                         <option className="bg-light" value="idr">IDR</option>
@@ -119,9 +119,9 @@ const Convert = () => {
                     </select>
                     <button className="btn btn-primary rounded-4 px-5" onClick={e => handle(e)}>Convert</button>
                 </div>
-                <div className="bg-transparent mt-3">
-                    <label htmlFor="output" className="bg-transparent text-light">Result:</label>
-                    <div id="output" className="bg-light w-50 p-2 rounded" style={{height:"38px"}}></div>
+                <div className="bg-transparent">
+                    <div id="output" className="bg-light p-2 rounded" style={{height:"38px", width:"300px"}}></div>
+                    <label htmlFor="output" className="bg-transparent text-light">Result will show up here ^</label>
                 </div>
             </div>
         </div>
