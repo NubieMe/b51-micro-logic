@@ -69,13 +69,13 @@ const Count = () => {
                 </div>
                 <Title>Counting Duration</Title>
             </div>
-            <div style={date_styles} className="rounded p-4 ps-5 d-flex flex-row">
-                <div style={{backgroundColor:"transparent"}} className="flex-column w-50">
+            <div style={date_styles} className="rounded p-4 ps-5 d-flex flex-wrap">
+                <div style={{backgroundColor:"transparent"}} className="flex-column">
                     <label htmlFor="date" className="text-light form-label" style={{backgroundColor:"transparent"}}>Input Countdown Date</label>
                     <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"/>
-                    <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 w-50  " onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
+                    <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 px-4" onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
                     {date === "" ? null : (
-                        <button className="btn btn-danger text-light rounded-5 w-50" onClick={e => reset(e)}>Reset</button>
+                        <button className="btn btn-danger text-light rounded-5 px-4" onClick={e => reset(e)}>Reset</button>
                     )}
                 </div>
                 
