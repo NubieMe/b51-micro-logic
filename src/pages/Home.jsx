@@ -7,7 +7,7 @@ const Home = () => {
     }
 
     const div_styles = {
-        width: "130vh",
+        width: "auto",
         margin: "100px auto",
         display: "flex", 
         flexWrap: "wrap",

@@ -6,7 +6,7 @@ const Count = () => {
     const date_styles = {
         backgroundColor: "#1e293b",
         border: "1 solid #353f4f",
-        width: "100vh",
+        width: "auto",
         margin: "0 auto"
     }
 
@@ -55,7 +55,7 @@ const Count = () => {
         setDate("")
         const element = document.getElementById("submit")
         element?.classList.toggle("disabled")
-        const elem = document.getElementById("date").setAttribute("value", "")
+        document.getElementById("date").value = ""
     }
     
 
@@ -75,7 +75,7 @@ const Count = () => {
                     <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"/>
                     <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 w-50  " onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
                     {date === "" ? null : (
-                        <button className="btn btn-danger px-5 text-light rounded-5 w-50" onClick={e => reset(e)}>Reset</button>
+                        <button className="btn btn-danger text-light rounded-5 w-50" onClick={e => reset(e)}>Reset</button>
                     )}
                 </div>
                 
