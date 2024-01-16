@@ -22,6 +22,7 @@ const Count = () => {
         e.preventDefault()
         const elem = document.getElementById("date").value
         setDate(elem)
+        if (elem === "") return alert("Please input the date required!")
         
         const element = document.getElementById("submit")
         element?.classList.toggle("disabled")
