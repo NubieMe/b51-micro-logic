@@ -10,6 +10,13 @@ const Count = () => {
         margin: "0 auto"
     }
 
+    let timer
+    
+    useEffect(() => {
+        if (date === "") return
+        setTimeout(timer = setInterval(render, 1000), 1000)
+    },[date])
+        
     
     function handle(e) {
         e.preventDefault()
@@ -20,9 +27,10 @@ const Count = () => {
         element?.classList.toggle("disabled")
         render()
     }
-
+    
     function render() {
-        return getDistanceTime(date)
+        if(date === "") return
+        document.getElementById("count").innerHTML = getDistanceTime(date);
     }
     
     function getDistanceTime(time) {
@@ -42,14 +50,13 @@ const Count = () => {
     
     function reset(e) {
         e.preventDefault()
+        clearInterval(timer)
         setDate("")
         const element = document.getElementById("submit")
         element?.classList.toggle("disabled")
         const elem = document.getElementById("date").setAttribute("value", "")
-        clearInterval(timer)
     }
     
-    const timer = setInterval(render, 1000)
 
     return (
         <div className='container-lg mt-5 column align-items-center'>
@@ -70,14 +77,12 @@ const Count = () => {
                         <button className="btn btn-danger px-5 text-light rounded-5 w-50" onClick={e => reset(e)}>Reset</button>
                     )}
                 </div>
-                {date === "" ? null : (
-                    <div style={{backgroundColor:"transparent"}} className="d-flex flex-column ps-5 pt-4">
-                        <label style={{backgroundColor:"transparent"}} className="text-light text-right">Countdown:</label>
-                        <div style={{backgroundColor:"transparent"}} className="text-light text-right" id="count">{date === "" ? "countdown will show here" : (
-                            render()
-                        )}</div>
-                    </div>
-                )}
+                
+                <div style={{backgroundColor:"transparent"}} className="d-flex flex-column ps-5 pt-4">
+                    <label style={{backgroundColor:"transparent"}} className="text-light text-right">Countdown:</label>
+                    <div style={{backgroundColor:"transparent"}} className="text-light text-right" id="count">{date === "" ? null : ""}</div>
+                </div>
+                
             </div>
         </div>
     )
