@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import Title from "../components/Title"
-import { getHeroes, searchHeroes } from "../components/api"
+import { getHeroes, searchHeroes } from "../utils/api"
+import MainContainer from "../components/MainContainer"
+import Header from "../components/Header"
+import { subCon_styles } from "../utils/subCon"
 
 const ML = () => {
     const [heroes, setHeroes] = useState([])
-    const div_styles = {
-        backgroundColor: "#1e293b",
-        border: "1 solid #353f4f",
-        margin: "0 auto"
-    }
 
     useEffect(() => {
         getHeroes()
@@ -28,19 +26,15 @@ const ML = () => {
     }
 
     return (
-        <div className='container-lg mt-5 column align-items-center'>
-            <div className="w-100 d-flex row">
-                <div className="col-lg-8">
-                    <a href="/">
-                        <button className="btn btn-outline-primary">Back</button>
-                    </a>
-                </div>
+        <MainContainer>
+            <Header isHome={false}>
                 <Title>Mobile Legends</Title>
-            </div>
-            <div className="container-lg p-4" style={div_styles}>
+            </Header>
+            <div className="container-lg p-4" style={subCon_styles}>
                 <div className="bg-transparent mb-5 ms-4 mt-3">
                     <h2 className="bg-transparent text-light">Daftar Hero</h2>
-                    <input id="input" className="form-control mb-3" style={{width:"300px"}} placeholder="Search Hero based on name" />
+                    <input id="input" className="form-control mb-3" style={{width:"300px"}}
+                    placeholder="Search Hero based on name" />
                     <button className="btn btn-primary rounded px-4 me-3" onClick={() => search()}>Search</button>
                     <button className="btn btn-danger rounded px-4" onClick={() => reset()}>Reset</button>
                 </div>
@@ -55,7 +49,7 @@ const ML = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </MainContainer>
     )
 }
 

@@ -1,9 +1,12 @@
+import Header from "../components/Header"
+import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
 
 const Count = () => {
     const [date, setDate] = useState("")
-    const date_styles = {
+
+    const subCon_styles = {
         backgroundColor: "#1e293b",
         border: "1 solid #353f4f",
         width: "auto",
@@ -22,10 +25,10 @@ const Count = () => {
         e.preventDefault()
         const elem = document.getElementById("date").value
         setDate(elem)
+        
         if (elem === "") return alert("Please input the date required!")
         
-        const element = document.getElementById("submit")
-        element?.classList.toggle("disabled")
+        document.getElementById("submit").classList.toggle("disabled")
         render()
     }
     
@@ -49,43 +52,36 @@ const Count = () => {
     }
 
     
-    function reset(e) {
-        e.preventDefault()
+    function reset() {
         clearInterval(timer)
         setDate("")
-        const element = document.getElementById("submit")
-        element?.classList.toggle("disabled")
+        
+        const element = document.getElementById("submit").classList.toggle("disabled")
         document.getElementById("date").value = ""
     }
     
 
     return (
-        <div className='container-lg mt-5 column align-items-center'>
-            <div className="w-100 d-flex row mb-4">
-                <div className="col-lg-8">
-                    <a href="/">
-                        <button className="btn btn-outline-primary">Back</button>
-                    </a>
-                </div>
+        <MainContainer>
+            <Header isHome={false}>
                 <Title>Counting Duration</Title>
-            </div>
-            <div style={date_styles} className="rounded p-4 ps-5 d-flex flex-wrap">
-                <div style={{backgroundColor:"transparent"}} className="flex-column">
-                    <label htmlFor="date" className="text-light form-label" style={{backgroundColor:"transparent"}}>Input Countdown Date</label>
+            </Header>
+            <div style={subCon_styles} className="rounded p-4 mt-5 ps-5 d-flex flex-wrap">
+                <div className="flex-column bg-transparent">
+                    <label htmlFor="date" className="text-light form-label bg-transparent">Input Countdown Date</label>
                     <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"/>
-                    <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 px-4" onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
+                    <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 px-4"
+                    onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
                     {date === "" ? null : (
-                        <button className="btn btn-danger text-light rounded-5 px-4" onClick={e => reset(e)}>Reset</button>
+                        <button className="btn btn-danger text-light rounded-5 px-4" onClick={() => reset()}>Reset</button>
                     )}
                 </div>
-                
-                <div style={{backgroundColor:"transparent"}} className="d-flex flex-column ps-5 pt-4">
-                    <label style={{backgroundColor:"transparent"}} className="text-light text-right">Countdown:</label>
-                    <div style={{backgroundColor:"transparent"}} className="text-light text-right" id="count">{date === "" ? null : ""}</div>
+                <div className="d-flex flex-column ps-5 pt-4 bg-transparent">
+                    <label className="text-light text-right bg-transparent">Countdown:</label>
+                    <div className="text-light text-right bg-transparent" id="count">{date === "" ? null : ""}</div>
                 </div>
-                
             </div>
-        </div>
+        </MainContainer>
     )
 }
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import Title from "../components/Title"
+import MainContainer from "../components/MainContainer"
+import Header from "../components/Header"
 
 const TTT = () => {
     const [turn, setTurn] = useState("O")
@@ -20,8 +22,10 @@ const TTT = () => {
 
     function handle(e) {
         const id = e.target.id
+
         if(document.getElementById(id).innerHTML) return
         document.getElementById(id).innerHTML = turn
+        
         const set = id - 1
         
         if (turn === "O") {
@@ -104,17 +108,14 @@ const TTT = () => {
     }
 
     return (
-        <div className='container-lg mt-5 column align-items-center'>
-            <div className="w-100 d-flex row">
-                <div className="col-lg-8">
-                    <a href="/">
-                        <button className="btn btn-outline-primary">Back</button>
-                    </a>
-                </div>
+        <MainContainer>
+            <Header isHome={false}>
                 <Title>Tic Tac Toe</Title>
-            </div>
+            </Header>
             <div className="container mt-5">
-                <div className="alert alert-primary text-center mb-5">{winner === "" ? `Now Its ${turn} Turn` : `The Winner is ${winner}`}</div>
+                <div className="alert alert-primary text-center mb-5">
+                    {winner === "" ? `Now Its ${turn} Turn` : `The Winner is ${winner}`}
+                </div>
                 <div className="d-flex flex-row">
                     <button id="1" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
                     <button id="2" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
@@ -134,7 +135,7 @@ const TTT = () => {
                     <button className="btn btn-primary mt-3" onClick={() => reset()}>Play Again</button>
                 )}</div>
             </div>
-        </div>
+        </MainContainer>
     )
 }
 

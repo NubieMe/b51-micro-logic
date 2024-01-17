@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Title from "../components/Title"
+import MainContainer from "../components/MainContainer"
+import Header from "../components/Header"
+import { subCon_styles } from "../utils/subCon"
 
 const Convert = () => {
     const [from, setFrom] = useState("")
     const [to, setTo] = useState("")
-
-    const div_styles = {
-        backgroundColor: "#1e293b",
-        border: "1 solid #353f4f",
-        width: "auto",
-        margin: "0 auto"
-    }
 
     const usd = {
         idr: 15592.39,
@@ -37,8 +33,8 @@ const Convert = () => {
     }
 
 
-    function handle(e) {
-        e.preventDefault()
+    function handle() {
+        //error handling
         const elem = document.getElementById("number").value
         if (from | to === "") {
             return alert("Please input the currency correctly!")
@@ -90,16 +86,11 @@ const Convert = () => {
 
 
     return (
-        <div className='container-lg mt-5 column align-items-center'>
-            <div className="w-100 d-flex row">
-                <div className="col-lg-8">
-                    <a href="/">
-                        <button className="btn btn-outline-primary">Back</button>
-                    </a>
-                </div>
+        <MainContainer>
+            <Header isHome={false}>
                 <Title>Currency Convert</Title>
-            </div>
-            <div style={div_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-around gap-5 rounded">
+            </Header>
+            <div style={subCon_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-around gap-5 rounded">
                 <div className=" d-flex align-items-center flex-wrap gap-3 bg-transparent">
                     <input type="number" id="number" placeholder="Input the amount" className="form-control"/>
                     <select id="from" className="bg-light p-1 rounded mx-3" onChange={e => setFrom(e.target.value)}>
@@ -117,14 +108,14 @@ const Convert = () => {
                         <option className="bg-light" value="eur">EUR</option>
                         <option className="bg-light" value="gbp">GBP</option>
                     </select>
-                    <button className="btn btn-primary rounded-4 px-5" onClick={e => handle(e)}>Convert</button>
+                    <button className="btn btn-primary rounded-4 px-5" onClick={() => handle()}>Convert</button>
                 </div>
                 <div className="bg-transparent">
                     <div id="output" className="bg-light p-2 rounded" style={{height:"38px", width:"300px"}}></div>
                     <label htmlFor="output" className="bg-transparent text-light">Result will show up here ^</label>
                 </div>
             </div>
-        </div>
+        </MainContainer>   
     )
 }
 
