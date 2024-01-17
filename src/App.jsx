@@ -7,6 +7,7 @@ import TTT from "./pages/TTT"
 import Matching from "./pages/Matching"
 import Salary from "./pages/Salary"
 import Scramble from "./pages/Scramble"
+import NotFound from "./pages/404"
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
         <Route path="/matching" element={<Matching/>}/>
         <Route path="/salary" element={<Salary/>}/>
         <Route path="/scramble" element={<Scramble/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </Router>
   )
