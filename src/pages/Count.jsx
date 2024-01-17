@@ -2,31 +2,25 @@ import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
+import { subCon_styles } from "../utils/subCon"
 
 const Count = () => {
     const [date, setDate] = useState("")
-
-    const subCon_styles = {
-        backgroundColor: "#1e293b",
-        border: "1 solid #353f4f",
-        width: "auto",
-        margin: "0 auto"
-    }
+    const [counting, setCounting] = useState(false)
 
     let timer
     
     useEffect(() => {
-        if (date === "") return
+        if (counting === false) return
         setTimeout(timer = setInterval(render, 1000), 1000)
-    },[date])
-        
+    },[counting])
+    
     
     function handle(e) {
         e.preventDefault()
-        const elem = document.getElementById("date").value
-        setDate(elem)
+        if (date === "") return alert("Please input the date required!")
         
-        if (elem === "") return alert("Please input the date required!")
+        setCounting(true)
         
         document.getElementById("submit").classList.toggle("disabled")
         render()
@@ -55,9 +49,9 @@ const Count = () => {
     function reset() {
         clearInterval(timer)
         setDate("")
+        setCounting(false)
         
-        const element = document.getElementById("submit").classList.toggle("disabled")
-        document.getElementById("date").value = ""
+        document.getElementById("submit").classList.toggle("disabled")
     }
     
 
@@ -69,10 +63,11 @@ const Count = () => {
             <div style={subCon_styles} className="rounded p-4 mt-5 ps-5 d-flex flex-wrap">
                 <div className="flex-column bg-transparent">
                     <label htmlFor="date" className="text-light form-label bg-transparent">Input Countdown Date</label>
-                    <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"/>
+                    <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"
+                    value={date} onChange={e => setDate(e.target.value)}/>
                     <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 px-4"
-                    onClick={e => handle(e)}>{date === "" ? "Start" : "Counting. . . " }</button>
-                    {date === "" ? null : (
+                    onClick={e => handle(e)}>{counting === false ? "Start" : "Counting. . . " }</button>
+                    {counting === false ? null : (
                         <button className="btn btn-danger text-light rounded-5 px-4" onClick={() => reset()}>Reset</button>
                     )}
                 </div>
