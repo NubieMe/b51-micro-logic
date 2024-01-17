@@ -18,7 +18,6 @@ const Scramble = () => {
     const arr = ["apple", "samsung", "huawei", "oneplus", "xiaomi", "infinix", "realme", "tecno", "vivo", "asus"]
     
     useEffect(() => {
-        console.log("test")
         setWord(arr[index])
     },[])
 
