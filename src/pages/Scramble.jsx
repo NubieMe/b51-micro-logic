@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
-import { subCon_styles } from "../utils/subCon"
+import { subCon_styles } from "../utils/styling"
 
 const Scramble = () => {
     const [input, setInput] = useState("")

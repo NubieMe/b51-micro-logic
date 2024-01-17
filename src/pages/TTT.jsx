@@ -2,21 +2,12 @@ import { useEffect, useState } from "react"
 import Title from "../components/Title"
 import MainContainer from "../components/MainContainer"
 import Header from "../components/Header"
+import { cube_styles } from "../utils/styling"
 
 const TTT = () => {
     const [turn, setTurn] = useState("O")
     const [winner, setWinner] = useState("")
     const [arr, setArr] = useState([])
-
-    const div_styles = {
-        height: "50px",
-        width: "50px",
-        fontSize:"24px",
-        padding: "20px",
-        justifyContent: "center",
-        alignItems:"center",
-        border: "1 solid #ccc"
-    }
 
     let val
 
@@ -117,19 +108,19 @@ const TTT = () => {
                     {winner === "" ? `Now Its ${turn} Turn` : `The Winner is ${winner}`}
                 </div>
                 <div className="d-flex flex-row">
-                    <button id="1" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="2" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="3" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="1" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="2" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="3" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
                 </div>
                 <div className="d-flex flex-row">
-                    <button id="4" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="5" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="6" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="4" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="5" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="6" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
                 </div>
                 <div className="d-flex flex-row">
-                    <button id="7" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="8" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="9" style={div_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="7" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="8" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                    <button id="9" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
                 </div>
                 <div id="over">{winner === "" ? null : (
                     <button className="btn btn-primary mt-3" onClick={() => reset()}>Play Again</button>

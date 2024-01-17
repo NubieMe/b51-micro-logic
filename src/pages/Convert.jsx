@@ -2,7 +2,7 @@ import { useState } from "react"
 import Title from "../components/Title"
 import MainContainer from "../components/MainContainer"
 import Header from "../components/Header"
-import { subCon_styles } from "../utils/subCon"
+import { subCon_styles } from "../utils/styling"
 
 const Convert = () => {
     const [from, setFrom] = useState("")

@@ -2,7 +2,7 @@ import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
-import { subCon_styles } from "../utils/subCon"
+import { subCon_styles } from "../utils/styling"
 
 const Count = () => {
     const [date, setDate] = useState("")

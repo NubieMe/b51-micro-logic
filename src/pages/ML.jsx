@@ -3,7 +3,7 @@ import Title from "../components/Title"
 import { getHeroes, searchHeroes } from "../utils/api"
 import MainContainer from "../components/MainContainer"
 import Header from "../components/Header"
-import { subCon_styles } from "../utils/subCon"
+import { subCon_styles } from "../utils/styling"
 
 const ML = () => {
     const [heroes, setHeroes] = useState([])
