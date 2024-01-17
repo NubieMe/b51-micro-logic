@@ -7,6 +7,7 @@ import { subCon_styles } from "../utils/subCon"
 
 const ML = () => {
     const [heroes, setHeroes] = useState([])
+    const [input, setInput] = useState("")
 
     useEffect(() => {
         getHeroes()
@@ -14,13 +15,12 @@ const ML = () => {
     },[])
     
     const search = () => {
-        const q = document.getElementById("input").value
-        searchHeroes(q)
+        searchHeroes(input)
         .then(result => setHeroes(result))
     }
     
     const reset = () => {
-        document.getElementById("input").value = ""
+        setInput("")
         getHeroes()
         .then(result => setHeroes(result))
     }
@@ -33,8 +33,8 @@ const ML = () => {
             <div className="container-lg p-4" style={subCon_styles}>
                 <div className="bg-transparent mb-5 ms-4 mt-3">
                     <h2 className="bg-transparent text-light">Daftar Hero</h2>
-                    <input id="input" className="form-control mb-3" style={{width:"300px"}}
-                    placeholder="Search Hero based on name" />
+                    <input id="input" className="form-control mb-3" value={input} style={{width:"300px"}}
+                    placeholder="Search Hero based on name" onChange={e => setInput(e.target.value)}/>
                     <button className="btn btn-primary rounded px-4 me-3" onClick={() => search()}>Search</button>
                     <button className="btn btn-danger rounded px-4" onClick={() => reset()}>Reset</button>
                 </div>
