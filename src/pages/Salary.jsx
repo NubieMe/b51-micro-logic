@@ -46,19 +46,19 @@ const Salary = () => {
             </Header>
             <div style={subCon_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-evenly gap-5 rounded">
                 <form className="d-flex flex-column bg-transparent text-light">
-                    <label className="form-label bg-transparent">Salary</label>
+                    <label className="form-label bg-transparent text-info">Salary</label>
                     <input className="form-control mb-3" id="salary" type="number" value={salary}
                     onChange={e => setSalary(e.target.value)}/>
-                    <label className="form-label bg-transparent">Incentives</label>
+                    <label className="form-label bg-transparent text-info">Incentives</label>
                     <input className="form-control mb-3" id="incentive" type="number" value={incentive}
                     onChange={e => setIncentive(e.target.value)}/>
-                    <label className="form-label bg-transparent">Tax</label>
+                    <label className="form-label bg-transparent text-info">Tax</label>
                     <input className="form-control mb-3" id="tax" type="number" value={tax}
                     onChange={e => setTax(e.target.value)} placeholder="in percent"/>
                     <button className="btn btn-primary" onClick={(e) => handle(e)}>Count</button>
                 </form>
                 <div className="d-flex flex-column justify-content-start bg-transparent text-light">
-                    <h3 className="bg-transparent mb-4">Result</h3>
+                    <h3 className="bg-transparent mb-4 text-info">Result:</h3>
                     <p id="gross" className="bg-transparent">
                         Gross Salary: {gross === "" ? "Rp. 0,00" : gross}
                     </p>
