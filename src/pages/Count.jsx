@@ -2,7 +2,7 @@ import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
 import { useEffect, useState } from "react"
-import { subCon_styles } from "../utils/styling"
+import { miniCon_styles } from "../utils/styling"
 
 const Count = () => {
     const [date, setDate] = useState("")
@@ -16,8 +16,7 @@ const Count = () => {
     },[counting])
     
     
-    function handle(e) {
-        e.preventDefault()
+    function handle() {
         if (date === "") return alert("Please input the date required!")
         
         setCounting(true)
@@ -60,20 +59,20 @@ const Count = () => {
             <Header isHome={false}>
                 <Title>Counting Duration</Title>
             </Header>
-            <div style={subCon_styles} className="rounded p-4 mt-5 ps-5 d-flex flex-wrap">
-                <div className="flex-column bg-transparent">
-                    <label htmlFor="date" className="text-light form-label bg-transparent">Input Countdown Date</label>
+            <div style={miniCon_styles} className="rounded p-4 mt-3 d-flex flex-wrap">
+                <div style={{height:"100px"}} className="d-flex flex-column ps-2 bg-transparent">
+                    <label className="text-info text-right bg-transparent mb-3">Countdown:</label>
+                    <div className="text-light text-right bg-transparent" id="count">{date === "" ? null : ""}</div>
+                </div>
+                <div className="ms-2 flex-column bg-transparent">
+                    <label htmlFor="date" className="text-info form-label bg-transparent">Input Countdown Date</label>
                     <input className="me-3 form-control w-100 mb-3" type="datetime-local" name="date" id="date"
                     value={date} onChange={e => setDate(e.target.value)}/>
                     <button type="submit" id="submit" className="btn btn-primary text-light rounded-5 px-4"
-                    onClick={e => handle(e)}>{counting === false ? "Start" : "Counting. . . " }</button>
+                    onClick={() => handle()}>{counting === false ? "Start" : "Counting. . . " }</button>
                     {counting === false ? null : (
                         <button className="btn btn-danger text-light rounded-5 px-4" onClick={() => reset()}>Reset</button>
                     )}
-                </div>
-                <div className="d-flex flex-column ps-5 pt-4 bg-transparent">
-                    <label className="text-light text-right bg-transparent">Countdown:</label>
-                    <div className="text-light text-right bg-transparent" id="count">{date === "" ? null : ""}</div>
                 </div>
             </div>
         </MainContainer>
