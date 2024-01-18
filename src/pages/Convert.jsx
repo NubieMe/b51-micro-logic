@@ -35,7 +35,7 @@ const Convert = () => {
     }
 
 
-    function handle() {
+    function handle(e) {
         e.preventDefault()
         //error handling
         if (from | to === "") {
