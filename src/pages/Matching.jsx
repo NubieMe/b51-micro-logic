@@ -119,14 +119,14 @@ const Matching = () => {
                     <Cube id={"10"} isHidden={hidden[10]} click={(e) => handle(e)}>{mixed[10]}</Cube>
                     <Cube id={"11"} isHidden={hidden[11]} click={(e) => handle(e)}>{mixed[11]}</Cube>
                 </div>
-                <div className="d-flex flex-row gap-1 mb-4 bg-transparent">
+                <div className="d-flex flex-row gap-1 bg-transparent">
                     <Cube id={"12"} isHidden={hidden[12]} click={(e) => handle(e)}>{mixed[12]}</Cube>
                     <Cube id={"13"} isHidden={hidden[13]} click={(e) => handle(e)}>{mixed[13]}</Cube>
                     <Cube id={"14"} isHidden={hidden[14]} click={(e) => handle(e)}>{mixed[14]}</Cube>
                     <Cube id={"15"} isHidden={hidden[15]} click={(e) => handle(e)}>{mixed[15]}</Cube>
                 </div>
                 {!result ? null : (
-                    <button className="btn btn-primary" onClick={() => reset()}>Play Again</button>
+                    <button className="btn btn-primary mt-4 ms-5" onClick={() => reset()}>Play Again</button>
                 )}
             </div>
         </MainContainer>
