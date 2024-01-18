@@ -3,7 +3,7 @@ import Cube from "../components/Cube"
 import Header from "../components/Header"
 import MainContainer from "../components/MainContainer"
 import Title from "../components/Title"
-import { miniCon_styles, subCon_styles } from "../utils/styling"
+import { miniCon_styles } from "../utils/styling"
 
 const Matching = () => {
     const [firstId, setFirstId] = useState("")
