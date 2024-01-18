@@ -36,6 +36,7 @@ const Convert = () => {
 
 
     function handle() {
+        e.preventDefault()
         //error handling
         if (from | to === "") {
             return alert("Please input the currency correctly!")
@@ -93,7 +94,7 @@ const Convert = () => {
                 <Title>Currency Convert</Title>
             </Header>
             <div style={subCon_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-around gap-5 rounded">
-                <div className=" d-flex align-items-center flex-wrap gap-3 bg-transparent">
+                <form className=" d-flex align-items-center flex-wrap gap-3 bg-transparent">
                     <input type="number" id="number" placeholder="Input the amount" className="form-control"
                     onChange={e => setInput(e.target.value)}/>
                     <select id="from" className="bg-light p-1 rounded mx-3" onChange={e => setFrom(e.target.value)}>
@@ -111,8 +112,8 @@ const Convert = () => {
                         <option className="bg-light" value="eur">EUR</option>
                         <option className="bg-light" value="gbp">GBP</option>
                     </select>
-                    <button className="btn btn-primary rounded-4 px-5" onClick={() => handle()}>Convert</button>
-                </div>
+                    <button className="btn btn-primary rounded-4 px-4" onClick={(e) => handle(e)}>Convert</button>
+                </form>
                 <div className="bg-transparent">
                     <div id="output" className="bg-light p-2 rounded mb-2" style={{height:"38px", width:"300px"}}>
                         {result === "" ? null : result}
