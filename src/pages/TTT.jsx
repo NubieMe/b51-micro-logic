@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Title from "../components/Title"
 import MainContainer from "../components/MainContainer"
 import Header from "../components/Header"
-import { cube_styles, miniCon_styles } from "../utils/styling"
+import { miniCon_styles } from "../utils/styling"
 import Cube from "../components/Cube"
 
 const TTT = () => {
