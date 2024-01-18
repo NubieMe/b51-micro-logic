@@ -30,9 +30,9 @@ const ML = () => {
             <Header isHome={false}>
                 <Title>Mobile Legends</Title>
             </Header>
-            <div className="container-lg p-4" style={subCon_styles}>
+            <div className="container-lg p-4 rounded" style={subCon_styles}>
                 <div className="bg-transparent mb-5 ms-4 mt-3">
-                    <h2 className="bg-transparent text-light">Daftar Hero</h2>
+                    <h2 className="bg-transparent text-light">List of Heroes</h2>
                     <input id="input" className="form-control mb-3" value={input} style={{width:"300px"}}
                     placeholder="Search Hero based on name" onChange={e => setInput(e.target.value)}/>
                     <button className="btn btn-primary rounded px-4 me-3" onClick={() => search()}>Search</button>
@@ -41,8 +41,8 @@ const ML = () => {
                 <div className="p-4 bg-transparent">
                     {/* dynamic content */}
                     {heroes.map(data => 
-                        <div style={{backgroundColor:"#293548", color:"white"}} className="mb-3 p-4" key={data.hero_id}>
-                            <h5 style={{color:"#38bdf8", backgroundColor:"#293548"}} className="mb-3">{data.hero_name}</h5>
+                        <div style={{backgroundColor:"#293548", color:"white"}} className="mb-3 p-4 rounded" key={data.hero_id}>
+                            <h5 style={{color:"#38bdf8", backgroundColor:"#293548"}} className="mb-4">{data.hero_name}</h5>
                             <p style={{backgroundColor:"#293548"}}>Role : {data.hero_role}</p>
                             <p style={{backgroundColor:"#293548"}}>Speciallist : {data.hero_specially}</p>
                         </div>
