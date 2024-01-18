@@ -48,7 +48,7 @@ const Scramble = () => {
                     <h3 className="bg-transparent mb-5" style={{color:"#38bdf8"}}>Guess the word</h3>
                     <h5 className="bg-transparent text-center mb-3">{shuffle(word)}</h5>
                     <input id="input" className="form-control mb-3" value={input}
-                    onChange={e => setInput(e.target.value)}/>
+                    onChange={e => setInput(e.target.value.toLowerCase())}/>
                     <div className="d-flex flex-wrap bg-transparent justify-content-center gap-5 mt-3">
                         <button className="btn btn-primary px-5" onClick={(e) => handle(e)}>Submit</button>
                         <button className="btn btn-danger px-5" onClick={(e) => reset(e)}>Reset</button>
