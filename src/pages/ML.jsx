@@ -14,12 +14,14 @@ const ML = () => {
         .then(result => setHeroes(result))
     },[])
     
-    const search = () => {
+    const search = (e) => {
+        e.preventDefault()
         searchHeroes(input)
         .then(result => setHeroes(result))
     }
     
-    const reset = () => {
+    const reset = (e) => {
+        e.preventDefault()
         setInput("")
         getHeroes()
         .then(result => setHeroes(result))
@@ -31,13 +33,13 @@ const ML = () => {
                 <Title>Mobile Legends</Title>
             </Header>
             <div className="container-lg p-4 rounded" style={subCon_styles}>
-                <div className="bg-transparent mb-5 ms-4 mt-3">
+                <form className="bg-transparent mb-5 px-4 mt-3">
                     <h2 className="bg-transparent text-light">List of Heroes</h2>
-                    <input id="input" className="form-control mb-3" value={input} style={{width:"300px"}}
+                    <input id="input" className="form-control mb-3" value={input} style={{width:"260px"}}
                     placeholder="Search Hero based on name" onChange={e => setInput(e.target.value)}/>
-                    <button className="btn btn-primary rounded px-4 me-3" onClick={() => search()}>Search</button>
-                    <button className="btn btn-danger rounded px-4" onClick={() => reset()}>Reset</button>
-                </div>
+                    <button type="submit" className="btn btn-primary rounded px-4 me-3" onClick={(e) => search(e)}>Search</button>
+                    <button className="btn btn-danger rounded px-4" onClick={(e) => reset(e)}>Reset</button>
+                </form>
                 <div className="p-4 bg-transparent">
                     {/* dynamic content */}
                     {heroes.map(data => 
