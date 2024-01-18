@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import Title from "../components/Title"
 import MainContainer from "../components/MainContainer"
 import Header from "../components/Header"
-import { cube_styles } from "../utils/styling"
+import { cube_styles, miniCon_styles } from "../utils/styling"
+import Cube from "../components/Cube"
 
 const TTT = () => {
     const [turn, setTurn] = useState("O")
@@ -14,10 +15,7 @@ const TTT = () => {
     function handle(e) {
         const id = e.target.id
 
-        if(document.getElementById(id).innerHTML) return
-        document.getElementById(id).innerHTML = turn
-        
-        const set = id - 1
+        if(arr[id]) return
         
         if (turn === "O") {
             val = "X"
@@ -25,7 +23,7 @@ const TTT = () => {
             val = "O"
         }
         
-        arr[set] = turn
+        arr[id] = turn
         setTurn(val)
     }
     
@@ -87,15 +85,6 @@ const TTT = () => {
         setTurn("O")
         setWinner("")
         setArr([])
-        document.getElementById("1").innerHTML = ""
-        document.getElementById("2").innerHTML = ""
-        document.getElementById("3").innerHTML = ""
-        document.getElementById("4").innerHTML = ""
-        document.getElementById("5").innerHTML = ""
-        document.getElementById("6").innerHTML = ""
-        document.getElementById("7").innerHTML = ""
-        document.getElementById("8").innerHTML = ""
-        document.getElementById("9").innerHTML = ""
     }
 
     return (
@@ -103,27 +92,27 @@ const TTT = () => {
             <Header isHome={false}>
                 <Title>Tic Tac Toe</Title>
             </Header>
-            <div className="container mt-5">
-                <div className="alert alert-primary text-center mb-5">
+            <div style={miniCon_styles} className="p-5 rounded border border-primary-subtle">
+                <div className="alert alert-info text-center mb-5" role="alert">
                     {winner === "" ? `Now Its ${turn} Turn` : `The Winner is ${winner}`}
                 </div>
-                <div className="d-flex flex-row">
-                    <button id="1" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="2" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="3" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                <div className="d-flex flex-row gap-1 mb-1 ms-4 bg-transparent">
+                    <Cube id={"0"} isHidden={false} click={(e) => handle(e)}>{arr[0]}</Cube>
+                    <Cube id={"1"} isHidden={false} click={(e) => handle(e)}>{arr[1]}</Cube>
+                    <Cube id={"2"} isHidden={false} click={(e) => handle(e)}>{arr[2]}</Cube>
                 </div>
-                <div className="d-flex flex-row">
-                    <button id="4" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="5" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="6" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                <div className="d-flex flex-row gap-1 mb-1 ms-4 bg-transparent">
+                    <Cube id={"3"} isHidden={false} click={(e) => handle(e)}>{arr[3]}</Cube>
+                    <Cube id={"4"} isHidden={false} click={(e) => handle(e)}>{arr[4]}</Cube>
+                    <Cube id={"5"} isHidden={false} click={(e) => handle(e)}>{arr[5]}</Cube>
                 </div>
-                <div className="d-flex flex-row">
-                    <button id="7" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="8" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
-                    <button id="9" style={cube_styles} className="btn btn-light d-flex" onClick={(e) => handle(e)}></button>
+                <div className="d-flex flex-row gap-1 ms-4 bg-transparent">
+                    <Cube id={"6"} isHidden={false} click={(e) => handle(e)}>{arr[6]}</Cube>
+                    <Cube id={"7"} isHidden={false} click={(e) => handle(e)}>{arr[7]}</Cube>
+                    <Cube id={"8"} isHidden={false} click={(e) => handle(e)}>{arr[8]}</Cube>
                 </div>
-                <div id="over">{winner === "" ? null : (
-                    <button className="btn btn-primary mt-3" onClick={() => reset()}>Play Again</button>
+                <div className="ms-5 bg-transparent">{winner === "" ? null : (
+                    <button className="btn btn-primary mt-4" onClick={() => reset()}>Play Again</button>
                 )}</div>
             </div>
         </MainContainer>

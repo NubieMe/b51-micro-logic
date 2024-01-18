@@ -18,7 +18,7 @@ export const cube_styles = {
 export const miniCon_styles = {
     backgroundColor: "#1e293b",
     border: "1 solid #353f4f",
-    width: "45.5vh",
+    width: "19.4rem",
     margin: "0 auto"
 }
 
