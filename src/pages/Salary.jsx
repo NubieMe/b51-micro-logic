@@ -17,7 +17,8 @@ const Salary = () => {
     })
 
     
-    function handle() {
+    function handle(e) {
+        e.preventDefault()
         if(!salary | Math.sign(salary) === -1) return alert("Please input salary correctly!")
         
         if (!incentive | Math.sign(incentive) === -1) return alert("Please input incentive correctly!")
@@ -44,7 +45,7 @@ const Salary = () => {
                 <Title>Salary Calculating</Title>
             </Header>
             <div style={subCon_styles} className="d-flex flex-wrap py-5 px-4 mt-5 justify-content-evenly gap-5 rounded">
-                <div className="d-flex flex-column bg-transparent text-light">
+                <form className="d-flex flex-column bg-transparent text-light">
                     <label className="form-label bg-transparent">Salary</label>
                     <input className="form-control mb-3" id="salary" type="number" value={salary}
                     onChange={e => setSalary(e.target.value)}/>
@@ -54,8 +55,8 @@ const Salary = () => {
                     <label className="form-label bg-transparent">Tax</label>
                     <input className="form-control mb-3" id="tax" type="number" value={tax}
                     onChange={e => setTax(e.target.value)} placeholder="in percent"/>
-                    <button className="btn btn-primary" onClick={() => handle()}>Count</button>
-                </div>
+                    <button className="btn btn-primary" onClick={(e) => handle(e)}>Count</button>
+                </form>
                 <div className="d-flex flex-column justify-content-start bg-transparent text-light">
                     <h3 className="bg-transparent mb-4">Result</h3>
                     <p id="gross" className="bg-transparent">
