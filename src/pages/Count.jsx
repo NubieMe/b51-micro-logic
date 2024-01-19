@@ -17,7 +17,11 @@ const Count = () => {
     
     
     function handle() {
-        if (date === "") return alert("Please input the date required!")
+        if (date === "") {
+            return alert("Please input the date required!")
+        } else if (new Date(date).getTime() < new Date().getTime()) {
+            return alert("Please input the date correctly!")
+        }
         
         setCounting(true)
         
@@ -26,7 +30,13 @@ const Count = () => {
     }
     
     function render() {
-        if(date === "") return
+        if (date === "") return
+        if (getDistanceTime(date) === null) {
+            clearInterval(timer)
+            setCounting(false)
+            document.getElementById("submit").classList.toggle("disabled")
+            return
+        }
         document.getElementById("count").innerHTML = getDistanceTime(date);
     }
     
@@ -40,7 +50,13 @@ const Count = () => {
         const minutes = Math.floor((distance / 1000 / 60) % 60 )
         const hours = Math.floor((distance / 1000 / 60 / 60) % 60 )
         const days = Math.floor((distance / 1000 / 60 / 60 / 24))
-    
+
+        if (Math.sign(seconds) === -1) {
+            return null
+        } else if ((days === 0) && (hours === 0) && (minutes === 0) && (seconds === 0)) {
+            return "Time's Up!"
+        }
+
         return `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`
     }
 
