@@ -43,7 +43,11 @@ const Scramble = () => {
 
     function handle(e) {
         e.preventDefault()
-        if(input !== word) return alert("Wrong answer, Try again!")
+        if(input !== word) {
+            setInput("")
+            setWord(arr[index])
+            return alert("Wrong answer, Try again!")
+        }
     
         setWord(arr[index])
         setScore(score + 1)
