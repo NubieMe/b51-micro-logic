@@ -23,7 +23,7 @@ const Salary = () => {
         
         if (!incentive | Math.sign(incentive) === -1) return alert("Please input incentive correctly!")
         
-        if(!tax | Math.sign(tax) === -1 | tax === 100) return alert("Please input tax correctly!")
+        if(!tax | Math.sign(tax) === -1 | tax >= 100) return alert("Please input tax in percent correctly!")
         
         const tx = (parseInt(salary) + parseInt(incentive)) / 100 * parseInt(tax)
 
@@ -60,13 +60,13 @@ const Salary = () => {
                 <div className="d-flex flex-column justify-content-start bg-transparent text-light">
                     <h3 className="bg-transparent mb-4 text-info">Result:</h3>
                     <p id="gross" className="bg-transparent">
-                        Gross Salary: {gross === "" ? "Rp. 0,00" : gross}
+                        Gross Salary: {gross === "" ? "Rp. 0,00" : Rupiah.format(gross)}
                     </p>
                     <p id="main" className="bg-transparent">
                         Main Salary: {salary === "" ? "Rp. 0,00" : Rupiah.format(salary)}
                     </p>
                     <p id="net" className="bg-transparent">
-                        Net Salary: {net === "" ? "Rp. 0,00" : net}
+                        Net Salary: {net === "" ? "Rp. 0,00" : Rupiah.format(net)}
                     </p>
                     {net === "" ? null : (
                         <button className="btn btn-danger mt-4" onClick={() => reset()}>Reset</button>
