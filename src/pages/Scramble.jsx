@@ -8,6 +8,7 @@ const Scramble = () => {
     const [input, setInput] = useState("")
     const [score, setScore] = useState(0)
     const [word, setWord] = useState("")
+    const [mixed, setMixed] = useState("")
 
     function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -20,16 +21,35 @@ const Scramble = () => {
     useEffect(() => {
         setWord(arr[index])
     },[])
+    
+    useEffect(() => {
+        if (word === shuffle(word)) {
+            setWord(arr[index])
+        }
+        setMixed(shuffle(word))
+    },[word])
+    
+    useEffect(() => {
+        if (mixed === word)
+        loopMixed()
+    },[mixed])
+
+    function loopMixed() {
+        if (mixed === word) {
+            setMixed(shuffle(word))
+        }
+        return
+    }
 
     function handle(e) {
         e.preventDefault()
         if(input !== word) return alert("Wrong answer, Try again!")
-
+    
         setWord(arr[index])
         setScore(score + 1)
         setInput("")
     }
-
+    
     function reset(e) {
         e.preventDefault()
 
@@ -37,7 +57,7 @@ const Scramble = () => {
         setScore(0)
         setWord(arr[index])
     }
-
+    
     return (
         <MainContainer>
             <Header isHome={false}>
@@ -46,8 +66,8 @@ const Scramble = () => {
             <div style={subCon_styles} className="container-lg mt-5 p-5 gap-5 d-flex flex-wrap rounded">
                 <form className="bg-transparent d-flex flex-column text-light col-md-6">
                     <h3 className="bg-transparent mb-5" style={{color:"#38bdf8"}}>Guess the word</h3>
-                    <h5 className="bg-transparent text-center mb-3">{shuffle(word)}</h5>
-                    <input id="input" className="form-control mb-3"
+                    <h5 className="bg-transparent text-center mb-3">{mixed}</h5>
+                    <input id="input" className="form-control mb-3" value={input}
                     onChange={e => setInput(e.target.value.toLowerCase())}/>
                     <div className="d-flex flex-wrap bg-transparent justify-content-center gap-5 mt-3">
                         <button className="btn btn-primary px-5" onClick={(e) => handle(e)}>Submit</button>
